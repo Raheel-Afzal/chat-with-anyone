@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AspectRatio } from "./ui/aspect-ratio";
+import { AspectRatio } from "../ui/aspect-ratio";
 import Image from "next/image";
 
 const Logo = () => {
