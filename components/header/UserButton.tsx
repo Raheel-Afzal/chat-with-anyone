@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { FC } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,8 +9,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import UserAvatar from "./UserAvatar";
+import { Session } from "next-auth";
+import { Button } from "../ui/button";
+import { signIn } from "next-auth/react";
 
-const UserButton = () => {
+interface UserButtonProps {
+  session: Session | null;
+}
+const UserButton: FC<UserButtonProps> = ({ session }) => {
+  if (!session) {
+    return (
+      <Button variant={"outline"} onClick={() => signIn()}>
+        Sign In
+      </Button>
+    );
+  }
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
